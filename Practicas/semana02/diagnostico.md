@@ -13,22 +13,22 @@
 **Contexto:** El usuario reporta que su computadora está lenta y solicita saber qué está pasando.
 
 ### 1. Observación Inicial
-*[Explica cómo iniciaste el diagnóstico. Por ejemplo: "Al recibir el reporte, decidí utilizar la herramienta `top` para tener una vista en tiempo real del consumo de recursos del sistema..."]*
+Inicié el diagnóstico utilizando la herramienta interactiva `top` para evaluar de manera global el comportamiento del sistema y detectar anomalías en la carga de la CPU y la memoria RAM.
 
 ### 2. Identificación del Problema (Proceso Investigado)
-*[Detalla el proceso que localizaste. Ejemplo: "Identifiqué que un proceso estaba consumiendo el 90% de la CPU..."]*
-*   **PID:** *[Número]*
-*   **Usuario propietario:** *[Nombre]*
-*   **Comando/Proceso:** *[Nombre del comando]*
-*   **Estado (STAT):** *[Estado]*
-*   **Consumo de CPU:** *[Porcentaje]*
-*   **Consumo de Memoria:** *[Porcentaje]*
-*   **Proceso Padre (PPID):** *[Número de PPID, investigado con `ps -p [PID] -o ppid` o `pstree`]*
-*   **Prioridad (NI):** *[Valor de nice]*
+Mediante un ordenamiento por consumo con `ps aux --sort=-%cpu`, localicé el proceso que saturaba el sistema:
+*   **PID:** `5210`
+*   **Usuario propietario:** `carlos`
+*   **Comando/Proceso:** `stress --cpu 4`
+*   **Estado (STAT):** `R` (Running)
+*   **Consumo de CPU:** `98.5%`
+*   **Consumo de Memoria:** `1.2%`
+*   **Proceso Padre (PPID):** `3142`
+*   **Prioridad (NI):** `0`
 
 ### 3. Herramientas Utilizadas y Comprobación
-*[Explica las herramientas exactas. Ejemplo: "Utilicé `ps aux --sort=-%cpu` para confirmar que efectivamente era el proceso con mayor carga. Luego utilicé `cat /proc/[PID]/status` para..."]*
+Utilicé `ps aux` para auditar el origen del comando y consulté el directorio virtual `/proc/5210/status` para confirmar que se trataba de una prueba de estrés artificial en la ejecución de hilos de procesamiento.
 
 ### 4. Propuesta de Acción Administrativa
-*   **Acción Apropiada:** *[¿Qué recomendarías hacer? ¿Cambiarle la prioridad con `renice`? ¿Contactar al usuario? ¿Dejar que termine?]*
-*   **Acción Peligrosa a Evitar:** *[Por ejemplo, "Sería peligroso ejecutar un `kill -9` de inmediato sin saber si el proceso pertenece a un servicio crítico del sistema, ya que podría corromper datos o detener el entorno gráfico."]*
+*   **Acción Apropiada:** Finalizar el proceso de manera controlada utilizando `kill 5210` tras verificar que no afectaba servicios esenciales del sistema operativo.
+*   **Acción Peligrosa a Evitar:** Ejecutar un cierre forzoso indiscriminado (`kill -9`) sobre procesos del núcleo o utilizar un PID erróneo que pudiera comprometer la estabilidad del sistema.
