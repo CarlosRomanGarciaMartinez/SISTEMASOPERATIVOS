@@ -12,7 +12,7 @@
 *   **Comando utilizado para usuario:** `whoami` -> Resultado: `carlos`
 *   **Comando utilizado para PID de shell:** `echo $$` -> Resultado: `3142`
 *   **Pregunta:** ¿Por qué una terminal puede considerarse relacionada con un proceso?
-    *   Porque la ventana de la terminal ejecuta un intérprete de comandos (como `bash` o `zsh`) que opera como un proceso activo con su propio PID dentro del sistema operativo.
+    *   Porque la ventana de la terminal ejecuta un intérprete de comandos (como `bash`) que opera como un proceso activo con su propio PID dentro del sistema operativo.
 
 ![Entorno](./evidencias/01_entorno_usuario.png)
 
@@ -62,6 +62,7 @@
     *   Tenemos un solo programa (el archivo ejecutable en disco) instanciado en tres procesos independientes en la memoria.
 
 ![Proceso de laboratorio](./evidencias/06_proceso_lab_sleep.png)
+![Finalizar proceso kill](./evidencias/11_finalizar_proceso_kill.png)
 
 ### 6. Administración de Trabajos (Background y Foreground)
 **Secuencia de trabajo:**
@@ -87,7 +88,7 @@
 
 ![Directorio proc](./evidencias/09_directorio_proc.png)
 
-### 9. Multiprogramación (Antes, Durante y Después)
+### 9. Multiprogramación (Antes, Después y Después)
 *   **Antes:** 142 procesos activos en el sistema.
 *   **Durante (ejecutando varios `sleep 300 &`):**
     *   Nuevos PIDs generados: `4512`, `4513`, `4514`

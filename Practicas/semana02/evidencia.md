@@ -71,6 +71,8 @@ Utilicé el comando `kill [PID]` utilizando estrictamente el número de PID del 
 ¿Cómo comprobé que terminaron?
 Volví a ejecutar la búsqueda con `ps aux | grep sleep` para verificar que la línea del proceso ya no aparecía activa.
 
+![Finalizar proceso kill](./evidencias/11_finalizar_proceso_kill.png)
+
 ## ⌨️ Primer plano y segundo plano
 
 ¿Qué diferencia observé?
