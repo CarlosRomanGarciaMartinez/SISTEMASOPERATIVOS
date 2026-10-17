@@ -2,7 +2,6 @@
 
 ## 👤 Datos del alumno
 - 🧑‍💻 **Nombre:** Carlos Román García Martínez
-- 🏫 **Grupo:** [Tu Grupo]
 - 📅 **Fecha:** 17 de octubre de 2026
 
 ## 💻 Entorno de trabajo
